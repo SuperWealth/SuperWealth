@@ -27,17 +27,22 @@ Then(/^I should see Please Sign Up$/) do
 end
 
 Given(/^I am on the sign up page$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  visit '/'
+  click_link 'sign up'
 end
 
 When(/^I enter a username$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  fill_in('username',:with => 'newtest')
 end
 
 When(/^I enter a password$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  fill_in('password',:with => 'newtest')
 end
 
-Then(/^I should see User name created$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+When(/^I click submit$/) do
+  click_button("Sign up")
+end
+
+Then(/^I should see Welcome to Super Wealth$/) do
+  page.should have_content("Welcome to Super Wealth")
 end

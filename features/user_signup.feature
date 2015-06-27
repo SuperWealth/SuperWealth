@@ -12,4 +12,5 @@ Feature: User can sign up
     Given I am on the sign up page
     When I enter a username
     When I enter a password
-    Then I should see User name created
+    When I click submit
+    Then I should see Welcome to Super Wealth
