@@ -11,8 +11,8 @@ DataMapper.auto_upgrade!
 
 class SuperWealthManager < Sinatra::Base
 
-  user1 = {:apple => 20, :IBM => 60}
-  user1_balance = 1000
+  # user1 = 
+  # user1_balance = 1000
 
 set :partial_template_engine, :erb
 set :public_folder, Proc.new { File.join(root, '..', 'public') }
@@ -37,7 +37,8 @@ end
 post '/users' do
   @user = User.create(:username => params[:username],
                    :email => params[:email],
-                   :password => params[:password])
+                   :password => params[:password],
+                   :balance => 100)
   if
     @user.save
     session[:user_id] = @user.id
@@ -83,8 +84,8 @@ end
   end
 
 get '/user_profile/:id' do
-  @investment = user1
-  @balance = user1_balance
+  # @investment = Investment.create(:price => 60.20, :direction => 'buy',:asset_id => 1,:user_id =>1, :user_id => session[:user_id])
+  # @balance = user1_balance
   erb :user_profile
 end
 
