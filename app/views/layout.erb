@@ -1,14 +1,30 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
 <!DOCTYPE html>
-<html lan="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Sinatra Template</title>
-    <link rel='stylesheet' type='text/css' href='/css/application.css'>
-    <link rel='stylesheet' type='text/css' href='/css/normalize.css'>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  </head>
+<% title="Super Wealth" %>
+<html lang="en">
+<head>
+  <title><%= @title || "SuperWealth" %></title>
+  <meta charseet="utf-5">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+  <header>
+    <h1><%= title %></h1>
+    </header>
   <body>
-    <%= yield %>
-    <script type="text/javascript" src="./js/interface.js"></script>
-  </body>
+ <% if flash[:errors] && !flash[:errors].empty? %>
+   <div id="errors">
+      <% flash[:errors].each do |error| %>
+         <%= error %>
+    </div>
+      <% end %>
+    </ul>
+  <% end %>
+  <% if flash[:notice] %>
+    <div id="notice">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+   <%= yield %>
+</body>
 </html>
