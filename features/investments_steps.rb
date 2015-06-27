@@ -15,5 +15,13 @@ Given(/^I am logged in with no investments$/) do
 end
 
 Then(/^I should see no investments$/) do
-  expect(find(:css, "#investments").length).to eq 0
+  expect(find(:css, "#investments")).to have_selector("li", count: 0)
+end
+
+Given(/^I have the investments Apple and IBM$/) do
+  visit '/user_profile/2'
+end
+
+Then(/^I should see Apple and IBM investments$/) do
+  expect()
 end

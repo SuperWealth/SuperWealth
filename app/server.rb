@@ -4,6 +4,7 @@ require 'data_mapper'
 require 'sinatra/partial'
 require 'sinatra/base'
 
+
 require_relative 'data_mapper_setup'
 
 DataMapper.auto_upgrade!
@@ -12,6 +13,7 @@ DataMapper.auto_upgrade!
 class SuperWealthManager < Sinatra::Base
 
   user1 = {:apple => 20, :IBM => 60}
+  user2 = {}
   user1_balance = 1000
 
 set :partial_template_engine, :erb
