@@ -1,1 +1,7 @@
 <h1 id ="balance"><%=@balance%></h1>
+
+<ul id="investments">
+  <%@investment.each_pair do |key, value|%>
+  <li><%=key%> <%=value%></li>
+<%end%>
+</ul>

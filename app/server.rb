@@ -17,7 +17,6 @@ set :public_folder, Proc.new { File.join(root, '..', 'public') }
   get '/user_profile/:id' do
     @investment = user1
     @balance = user1_balance
-    @params = params[:id]
     erb :user_profile
   end
 
