@@ -1,3 +1,4 @@
+require 'byebug'
 require 'sinatra'
 require 'rack-flash'
 require 'data_mapper'
@@ -74,7 +75,7 @@ post '/sessions' do
      redirect('/user_profile/:id')
     else
       flash[:errors] = ["Sorry, wrong username or password"]
-      redirect ('/sessions/new')
+      redirect ('/')
     end
   erb :users
 end
@@ -90,13 +91,12 @@ end
     end
   end
 
-get '/user_profile/:id' do
-  # @investment = Investment.create(:price => 60.20, :direction => 'buy',:asset_id => 1,:user_id =>1, :user_id => session[:user_id])
-  @investment = user1
-  @balance = user1_balance
-  erb :user_profile
-end
-
- # run! if app_file == $0
+  get '/user_profile/:id' do
+    @assets = Asset.all
+    @user = User.first(:id => session[:user_id]).name
+    @balance = User.first(:id => session[:user_id]).balance
+    @investments = Investment.all(:user_id => session[:user_id])
+    erb :user_profile
+  end
 
 end

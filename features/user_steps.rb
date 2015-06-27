@@ -20,6 +20,7 @@ end
 
 When(/^I click sign up button$/) do
   click_link ('sign up')
+
 end
 
 Then(/^I should see Please Sign Up$/) do
