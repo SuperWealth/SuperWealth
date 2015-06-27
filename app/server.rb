@@ -1,3 +1,4 @@
+require 'byebug'
 require 'sinatra'
 require 'rack-flash'
 require 'data_mapper'
@@ -84,8 +85,11 @@ end
   end
 
 get '/user_profile/:id' do
-  # @investment = Investment.create(:price => 60.20, :direction => 'buy',:asset_id => 1,:user_id =>1, :user_id => session[:user_id])
+  # @investment = Investment.create(:price => 60.(20, 
+    # :direction => 'buy',:asset_id => 1,:user_id =>1 , :user_id => session[:user_id])
   # @balance = user1_balance
+  @assets = Asset.all
+  @investments = Investment.all(:user_id => session[:user_id])
   erb :user_profile
 end
 
