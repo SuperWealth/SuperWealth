@@ -5,6 +5,7 @@ require 'data_mapper'
 require 'sinatra/partial'
 require 'sinatra/base'
 
+
 require_relative 'data_mapper_setup'
 
 DataMapper.auto_upgrade!
@@ -12,8 +13,14 @@ DataMapper.auto_upgrade!
 
 class SuperWealthManager < Sinatra::Base
 
-  # user1 = 
+
+  user1 = {:apple => 20, :IBM => 60}
+  user2 = {}
+  user1_balance = 1000
+
+  # user1 =
   # user1_balance = 1000
+
 
 set :partial_template_engine, :erb
 set :public_folder, Proc.new { File.join(root, '..', 'public') }
@@ -68,7 +75,7 @@ post '/sessions' do
      redirect('/user_profile/:id')
     else
       flash[:errors] = ["Sorry, wrong username or password"]
-      redirect ('/sessions/new')
+      redirect ('/')
     end
   erb :users
 end
@@ -78,21 +85,18 @@ end
       session[:user_id] = nil
       flash[:notice] = "You are now logged out"
       redirect to('/')
-    else 
+    else
       flash[:notice] = "You are not logged in"
       redirect to ('/')
     end
   end
 
-get '/user_profile/:id' do
-  # @investment = Investment.create(:price => 60.(20, 
-    # :direction => 'buy',:asset_id => 1,:user_id =>1 , :user_id => session[:user_id])
-  # @balance = user1_balance
-  @assets = Asset.all
-  @investments = Investment.all(:user_id => session[:user_id])
-  erb :user_profile
-end
-
- # run! if app_file == $0
+  get '/user_profile/:id' do
+    @assets = Asset.all
+    @user = User.first(:id => session[:user_id]).name
+    @balance = User.first(:id => session[:user_id]).balance
+    @investments = Investment.all(:user_id => session[:user_id])
+    erb :user_profile
+  end
 
 end

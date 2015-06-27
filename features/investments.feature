@@ -7,3 +7,8 @@ Feature: View Investments
     Given I am logged in with no investments
     Then I should see no investments
 
+  Scenario:
+    Given I have the investments Apple and IBM
+    When I am on my user profile page
+    Then I should see Apple and IBM investments
+

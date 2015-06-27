@@ -1,17 +1,29 @@
-<li><a href="/sessions/logout" id='sign up' name='sign-out'>Sign out</a></li>
-
-<!-- <h1 id ="balance"><%=@balance%></h1> -->
-
-<ul id="investments">
-
+<nav>
+  <ul class="nav nav-tabs">
+<li><a class="btn btn-warning" href="/sessions/logout" style="text-align:center" id='sign up' name='sign-out' style="text-align:center">Sign out</a></li>
+</ul>
+</nav>
 <h1> Investment Page </h1>
-<div>
-  <% if @investments.any? %>
-       <% @investments.reverse.each do |investment| %>       
-         <pre><ul><%= investment.price %> </ul>
-          <ul><%= @assets[investment.asset_id-1].name %>  </ul></pre>
-       <% end %>
-  <% else %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <h1 id ="balance">Cash Balance: £<%=@balance%></h1>
+        <h3>Your Held Assets</h3>
+        <% if @investments.any? %>
+
+        <ul class="list-group" id="investments">
+          <% @investments.reverse.each do |investment| %>
+          <li class="list-group-item"><%= @assets[investment.asset_id-1].name%>
+            <span class="badge"><%=investment.price%></span>
+          </li>
+        <%end%>
+        </ul>
+        <% else %>
       <p> No investments have been created yet </p>
   <% end %>
-</div> 
+      </div>
+  <div class="col-md-3"></div>
+  </div>
+</div>

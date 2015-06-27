@@ -1,19 +1,18 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-
 <!DOCTYPE html>
 <% title="Super Wealth" %>
 <html lang="en">
 <head>
-  <title><%= @title || "SuperWealth" %></title>
+  <title style="text-align:center"><%= @title || "SuperWealth" %></title>
   <meta charseet="utf-5">
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/bootstrap-responsive.css">
 </head>
   <header>
-    <h1><%= title %></h1>
+    <h1 style="text-align:center"><%= title %></h1>
     </header>
-  <body>
+  <body >
  <% if flash[:errors] && !flash[:errors].empty? %>
-   <div id="errors">
+   <div style="text-align:center" id="errors">
       <% flash[:errors].each do |error| %>
          <%= error %>
     </div>
@@ -26,5 +25,8 @@
     </div>
   <% end %>
    <%= yield %>
+   <script src="/js/bootstrap.min.js"></script>
+   <script src="//www.google.com/jsapi"></script>
+   <script src="/js/chartkick.js"></script>
 </body>
 </html>
