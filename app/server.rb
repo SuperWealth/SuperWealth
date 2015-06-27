@@ -93,7 +93,7 @@ end
 
   get '/user_profile/:id' do
     @assets = Asset.all
-    @user = User.first(:id => session[:user_id]).name
+    @user = User.first(:id => session[:user_id]).username
     @balance = User.first(:id => session[:user_id]).balance
     @investments = Investment.all(:user_id => session[:user_id])
     erb :user_profile
