@@ -23,5 +23,5 @@ Given(/^I have the investments Apple and IBM$/) do
 end
 
 Then(/^I should see Apple and IBM investments$/) do
-  expect()
+
 end

@@ -44,26 +44,45 @@ post '/users' do
     @user.save
     session[:user_id] = @user.id
     flash[:notice] = "Welcome to Super Wealth, #{@user.username}"
-    redirect ('/')
+    # redirect ('/user_profile/:id')
+    redirect('/user_profile/:id')
   else
     flash.now[:errors] = @user.errors.full_messages
     erb :signup
   end
 end
 
-post '/users' do
+ get '/sessions/new' do
+    @title = "Sign in"
+    erb :user_profile
+  end
+
+post '/sessions' do
   username, password = params[:username], params[:password]
     @user = User.authenticate(username, password)
+    puts @user
     if @user
      session[:user_id] = @user.id
      flash[:notice] = "Welcome back, #{@user.username}"
-     redirect ('/')
+     # redirect ('/user_profile/:id')
+     redirect('/user_profile/:id')
     else
       flash[:errors] = ["Sorry, wrong username or password"]
       redirect ('/sessions/new')
     end
   erb :users
 end
+
+  get '/sessions/logout' do
+    if session[:user_id]
+      session[:user_id] = nil
+      flash[:notice] = "You are now logged out"
+      redirect to('/')
+    else
+      flash[:notice] = "You are not logged in"
+      redirect to ('/')
+    end
+  end
 
 get '/user_profile/:id' do
   @investment = user1
