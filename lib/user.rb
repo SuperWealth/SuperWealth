@@ -4,6 +4,8 @@ class User
 
 
   include DataMapper::Resource
+
+  has n, :investments,:through => Resource
   
   property :id,     Serial 
   property :username,  String, :unique => true

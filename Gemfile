@@ -11,4 +11,4 @@ gem 'database_cleaner'
 gem 'bcrypt-ruby'
 gem 'dm-postgres-adapter'
 gem 'data_mapper'
-
+gem 'chartkick'

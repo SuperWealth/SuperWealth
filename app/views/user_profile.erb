@@ -1,18 +1,23 @@
-<li><a href="/sessions/logout" id='sign up' name='sign-out'>Sign out</a></li>
-
-<h1 id ="balance"><%=@balance%></h1>
-
-<ul id="investments">
-<h1> Investment Page</h1>
-<div>
-  <% if @investments.any? %>
-       <% @investments.reverse.each do |peep| %>
-           
-         <pre><ul><a href="peep/<%= peep.id %>"><%= investments.username %> posted on <%= investment.investment_timestamp.strftime("%D at %I:%M%p") %>: <%= peep.message %></a></ul></pre>
-    
-       <% end %>
-  <% else %>
-      <p> No investments have been created yet </p>
-  <% end %>
-</div> 
+<nav>
+  <ul class="nav nav-tabs">
+<li><a class="btn btn-warning" href="/sessions/logout" id='sign up' name='sign-out'>Sign out</a></li>
 </ul>
+</nav>
+<h1> Investment Page </h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <h1 id ="balance">Cash Balance: £<%=@balance%></h1>
+        <h3>Your Held Assets</h3>
+        <ul class="list-group" id="investments">
+          <%@investment.each_pair do |key, value|%>
+          <li class="list-group-item"><%=key%>
+            <span class="badge"><%=value%></span>
+          </li>
+        <%end%>
+        </ul>
+      </div>
+  <div class="col-md-3"></div>
+  </div>
+</div>
