@@ -8,14 +8,14 @@ require 'capybara'
 require 'capybara/cucumber'
 require 'rspec'
 
-Capybara.app = SuperWealth
+Capybara.app = SuperWealthManager
 
-class SuperWealthWorld
+class SuperWealthManagerWorld
   include Capybara::DSL
   include RSpec::Expectations
   include RSpec::Matchers
 end
 
 World do
-  SuperWealthWorld.new
+  SuperWealthManagerWorld.new
 end
