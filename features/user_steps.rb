@@ -1,3 +1,5 @@
+
+
 Given(/^I am on the home page$/) do
   visit '/'
 end
@@ -11,12 +13,10 @@ When(/^I enter a valid password$/) do
 end
 
 When(/^I press enter$/) do
+  save_and_open_page
   click_button 'Sign in'
 end
 
-Then(/^I should see the User Balance Page$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
 
 When(/^I click sign up button$/) do
   click_link ('sign up')
@@ -47,3 +47,16 @@ end
 Then(/^I should see Welcome to Super Wealth$/) do
   page.should have_content("Welcome to Super Wealth")
 end
+
+Given(/^I am logged in with no investments$/) do
+  visit '/'
+  click_link 'sign up'
+  fill_in('username',:with => 'hi')
+  fill_in('password',:with => 'hi')
+  click_button("Sign up")
+end
+
+Then(/^I should see no investments$/) do
+  page.should have_content("No investments have been created yet")
+end
+

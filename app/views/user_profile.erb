@@ -10,8 +10,6 @@
        <% @investments.reverse.each do |investment| %>       
          <pre><ul><%= investment.price %> </ul>
           <ul><%= @assets[investment.asset_id-1].name %>  </ul></pre>
-      
-
        <% end %>
   <% else %>
       <p> No investments have been created yet </p>

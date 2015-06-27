@@ -1,11 +1,11 @@
 Feature: User logging in
    In order to use the system
-   As a user I need to log in
-   I want to enter a valid username and password
+   As a user who wants secure investments
+   I want to see error messages
 
    Scenario:
      Given I am on the home page
-     When I enter a valid username
-     When I enter a valid password
+     When I enter an invalid username
+     When I enter an invalid password
      When I press enter
-     Then I should see the User Balance Page
+     Then I should see sorry error message
