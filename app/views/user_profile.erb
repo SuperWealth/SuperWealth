@@ -1,7 +1,18 @@
+<li><a href="/sessions/logout" id='sign up' name='sign-out'>Sign out</a></li>
+
 <h1 id ="balance"><%=@balance%></h1>
 
 <ul id="investments">
-  <%@investment.each_pair do |key, value|%>
-  <li><%=key%> <%=value%></li>
-<%end%>
+<h1> Investment Page</h1>
+<div>
+  <% if @investments.any? %>
+       <% @investments.reverse.each do |peep| %>
+           
+         <pre><ul><a href="peep/<%= peep.id %>"><%= investments.username %> posted on <%= investment.investment_timestamp.strftime("%D at %I:%M%p") %>: <%= peep.message %></a></ul></pre>
+    
+       <% end %>
+  <% else %>
+      <p> No investments have been created yet </p>
+  <% end %>
+</div> 
 </ul>

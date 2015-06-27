@@ -8,6 +8,8 @@ require 'capybara'
 require 'capybara/cucumber'
 require 'rspec'
 
+DataMapper.auto_migrate!
+
 Capybara.app = SuperWealthManager
 
 class SuperWealthManagerWorld

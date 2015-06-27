@@ -11,7 +11,7 @@ When(/^I enter a valid password$/) do
 end
 
 When(/^I press enter$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  click_button 'Sign in'
 end
 
 Then(/^I should see the User Balance Page$/) do
